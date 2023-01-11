@@ -32,7 +32,6 @@ const createRecipeObject = function (resp) {
 export const loadRecipe = async function (id) {
   try {
     const resp = await AJAX(`${API_URL}/${id}?key=${KEY}`);
-    console.log(resp);
     if (!resp) throw new Error('Cannot get recipe 💥');
 
     state.recipe = createRecipeObject(resp);
@@ -43,7 +42,6 @@ export const loadRecipe = async function (id) {
       state.recipe.bookmarked = false;
     }
   } catch (err) {
-    console.log(err);
     throw err;
   }
 };

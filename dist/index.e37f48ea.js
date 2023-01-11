@@ -631,6 +631,8 @@ const controlAddRecipe = async function(newRecipe) {
         setTimeout(function() {
             (0, _addRecipeViewDefault.default)._toggleWindow();
         }, (0, _config.MODAL_CLOSE_SEC) * 1000);
+        // Auto refresh
+        setTimeout(()=>location.reload(), (0, _config.MODAL_CLOSE_SEC) * 1000);
     } catch (err) {
         (0, _addRecipeViewDefault.default).renderError(err.message);
     }
@@ -1947,13 +1949,11 @@ const createRecipeObject = function(resp) {
 const loadRecipe = async function(id) {
     try {
         const resp = await (0, _helpers.AJAX)(`${(0, _config.API_URL)}/${id}?key=${(0, _config.KEY)}`);
-        console.log(resp);
         if (!resp) throw new Error("Cannot get recipe \uD83D\uDCA5");
         state.recipe = createRecipeObject(resp);
         if (state.bookmarks.some((item)=>item.id === id)) state.recipe.bookmarked = true;
         else state.recipe.bookmarked = false;
     } catch (err) {
-        console.log(err);
         throw err;
     }
 };
@@ -6183,7 +6183,7 @@ const API_URL = "https://forkify-api.herokuapp.com/api/v2/recipes";
 const TIMEOUT_SEC = 10;
 const RESULTS_PER_PAGE = 10;
 const KEY = "1a7a4fce-5ec1-4233-8d6c-d11a61380cca";
-const MODAL_CLOSE_SEC = 2.5;
+const MODAL_CLOSE_SEC = 1.5;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hGI1E":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
