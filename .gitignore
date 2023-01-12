@@ -1,5 +1,7 @@
 /node_modules
 .parcel-cache
+/dist
+/flowcharts
 
 .DS_Store
 .prettierrc
